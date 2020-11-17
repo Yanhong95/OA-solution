@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+$site-width: 1200px;
+$hero-width: 1600px;
+$profile-image-width: 300px;
+
+$gutter: 8px;
+$gray: #333;
+$primary: #1977F3;
+$primary-light: #EEF5FE;
+
+$small-breakpoint: 500px;
+$medium-breakpoint: 960px;
+
+.app {
+  * {
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+  }
+
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-rows: 6vh repeat(12, 1fr) 5vh;
+  grid-template-columns: repeat(24, 1fr);
+
+  &-navbar {
+    grid-row: 1/2;
+    grid-column: 1/-1;
+    background-color: #C4E7F7;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+
+    &__logo {
+      padding: 2px 0 2px 0;
+      grid-column: 3/5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+      p {
+        font-size: 2rem;
+        margin: 0;
+        color: $gray
+      }
+    }
+
+    &__navs {
+      grid-column: 9/11;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+        color: $gray;
+        padding: 0.8rem 1rem;
+      }
+    }
+  }
+
+  &-footer {
+    grid-row: 14 / -1;
+    grid-column: 1/ -1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    background-color: $primary;
+    color: #fff;
+
+    &__name{
+      font-size: 1rem;
+      grid-column: 3/5;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &__policy{
+      font-size: 1rem;
+      grid-column: 9/12;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+  }
+
+
+}
+
+.active {
+  background-color: $primary;
+  border-radius: 3px;
+  color: #fff !important;
+}
