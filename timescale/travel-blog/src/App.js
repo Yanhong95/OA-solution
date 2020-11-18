@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="app">
-      <navbar className="app-navbar">
+      <div className="app-navbar">
         <div className="app-navbar__logo">
           <p>Travelize</p>
           <i>My travelling experiences</i>
@@ -24,7 +24,7 @@ function App() {
           <NavLink to="/Blog" activeClassName='active'>Blog</NavLink>
           <NavLink to="/About" activeClassName='active' >About</NavLink>
         </div>
-      </navbar>
+      </div>
       {routes}
       <footer className="app-footer">
         <p className="app-footer__name">@2020 Travelize</p>
