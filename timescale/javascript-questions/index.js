@@ -10,7 +10,8 @@ const superHeroes = require('./super-heroes.json');
  * ]
  */
 const getDCHeroes = (heroes) => {
-  return heroes;
+  const newHeros = heroes.filter(hero => hero.publisher === 'Marvel Comics');
+  return newHeros;
 }
 
 /**
@@ -27,7 +28,11 @@ const getDCHeroes = (heroes) => {
  * ]
  */
 const convertCharactersToArray = (heroes) => {
-  return heroes;
+  const newHeros = heroes.map(hero => {
+    hero.characters = [...hero.characters.split(', ')];
+    return hero;
+  });
+  return newHeros;
 }
 
 /**
@@ -44,7 +49,14 @@ const convertCharactersToArray = (heroes) => {
  * }
  */
 const groupByPublisher = (heroes) => {
-  return heroes;
+  const newHeros = {};
+  heroes.forEach(hero => {
+    if(!(hero.publisher in newHeros)){
+      newHeros[hero.publisher] = [];
+    }
+    newHeros[hero.publisher].push(hero);
+  });
+  return newHeros;
 }
 
 /**
@@ -60,8 +72,37 @@ const groupByPublisher = (heroes) => {
  *  }
  * ]
  */
+
+// the original function:
+// const getDCHeroesWithMoreThanOneCharacter = (heroes) => {
+//   const dcHeros = heroes.filter(hero => hero.publisher === 'DC Comics');
+//   const newHeros = []
+//   dcHeros.forEach(hero => {
+//     const charactersArr = hero.characters.split(',');
+//     console.log(charactersArr);
+//     if(charactersArr.length >1){
+//       hero.characters = [...charactersArr];
+//       newHeros.push(hero);
+//     };
+//   });
+//   return newHeros;
+// }
+
+//  bove is the correnct answer I think.
+
+// ######### there is a bug right here I dont know why this heroes parameter structure is like:
+// {  superhero: 'Blue Beetle',
+//    publisher: 'DC Comics',
+//    alter_ego: 'Dan Garret',
+//    first_appearance: 'Mystery Men Comics #1',
+//    characters: [ 'Dan Garret', 'Ted Kord', 'Jaime Reyes' ] },
+// the characters property of input object is already an array, Looks weird. 
+
 const getDCHeroesWithMoreThanOneCharacter = (heroes) => {
-  return heroes;
+  console.log(heroes);
+  const dcHeros = heroes.filter(hero => hero.publisher === 'DC Comics');
+  const newHeros = dcHeros.filter(hero => hero.characters.length >1 );
+  return newHeros;
 }
 
 module.exports = {
